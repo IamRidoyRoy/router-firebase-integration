@@ -1,10 +1,12 @@
 import { getAuth } from 'firebase/auth';
 import React from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const auth = getAuth()
 const Login = () => {
     const [signInWithGoogle] = useSignInWithGoogle(auth);
+
 
     return (
         <div>
