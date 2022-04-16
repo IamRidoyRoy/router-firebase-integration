@@ -6,13 +6,22 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const auth = getAuth()
 const Login = () => {
     const [signInWithGoogle] = useSignInWithGoogle(auth);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location?.state?.from?.pathname || '/';
 
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(() => {
+                navigate(from, { replace: true })
+            })
+    }
 
     return (
         <div>
             <h1>Please Log in</h1>
             <div>
-                <button onClick={() => signInWithGoogle()}>Sign in with google</button>
+                <button onClick={handleGoogleSignIn}>Sign in with google</button>
             </div><br />
             <form>
                 <input type="email" placeholder='Your email' /><br />

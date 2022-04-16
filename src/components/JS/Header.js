@@ -17,6 +17,12 @@ const Header = () => {
                 <Link to='/'>Home</Link>
                 <Link to='/products'>Products</Link>
                 <Link to='/orders'>Orders</Link>
+                {/* Here we want to show VIP when user wil sign in  */}
+                {
+                    user && <>
+                        <Link to='/vip'>VIP</Link>
+                    </>
+                }
                 <Link to='/reviews'>Reviews</Link>
                 <Link to='/register'>Register</Link>
                 <span>{user?.displayName && user.displayName}</span>
@@ -26,6 +32,8 @@ const Header = () => {
                         :
                         <Link to='/login'>Login</Link>
                 }
+
+
             </nav>
         </div>
     );
